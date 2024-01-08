@@ -4,6 +4,7 @@ import Login from './pages/login'
 import Admin from './pages/admin'
 import User from './pages/user'
 import CreateUser from './pages/createUser'
+import Header from './components/Header/Header'
 
 
     function App() {
@@ -20,6 +21,8 @@ import CreateUser from './pages/createUser'
                     </Route>
                 </Routes>
             </BrowserRouter>
+
+            <Header/>
 
         </>
     )

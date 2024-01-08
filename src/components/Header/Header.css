@@ -1,0 +1,11 @@
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color:#EBEBEB;
+    justify-content: space-around;
+    align-content: center;
+    color: black;
+    width: 900px;
+    padding: 24px 0;
+}
