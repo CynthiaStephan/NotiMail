@@ -7,7 +7,7 @@ export default function Header(){
             <header>
                 <img src="./Logo.png" alt="Logo NotiMail" />
                 <div>
-                    <p>test</p>
+                    <p>Firmname</p>
                     <button>Deconnexion</button>
                 </div>
             </header>
