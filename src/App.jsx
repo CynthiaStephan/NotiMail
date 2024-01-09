@@ -6,6 +6,7 @@ import User from './pages/user'
 import CreateUser from './pages/createUser'
 import Header from './components/Header/Header'
 import Notification from './components/Notification/Notification'
+import CardEntreprise from './components/CardEntreprise/CardEntreprise'
 
 
     function App() {
@@ -25,6 +26,7 @@ import Notification from './components/Notification/Notification'
 
             <Header />
             <Notification />
+            <CardEntreprise />
 
         </>
     )
