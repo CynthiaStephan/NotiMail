@@ -20,6 +20,7 @@ import CardEntreprise from './components/CardEntreprise/CardEntreprise'
                     <Route path={'/admin/:firmname'} element={<CreateUser/>} />
                     <Route path={'/user/:firmname'} element={<User />} >
                         <Route path={'/user/:firmname'} />
+                        <Route path={'/user/:firmname'} />
                     </Route>
                 </Routes>
             </BrowserRouter>
