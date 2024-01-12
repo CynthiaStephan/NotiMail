@@ -23,6 +23,9 @@ export default function CardEntreprise(){
     
     /* Checkbox */
     const [checked, setChecked] = React.useState(true)
+    // Permet de selectionner les cases individuellement.
+    const [selectedCompanies, setSelectedCompanies] = useState({});
+
 
     /* Fetch pour récupérer les informations d'entreprise */
     const [companies, setCompanies] = useState([])
@@ -61,6 +64,12 @@ export default function CardEntreprise(){
         });
     }, []);
     
+    const handleCheckboxChange = (companyId) => {
+        setSelectedCompanies(prevState => ({
+            ...prevState,
+            [companyId]: !prevState[companyId],
+        }));
+    };
     
     
     return(
@@ -77,8 +86,8 @@ export default function CardEntreprise(){
 
                     <div className="top-companie-card">
                         <div className="top-left-card">
-                            <div>
-                            <div className={`pastille ${courrierReceptionne ? 'pastille-verte' : 'pastille-rouge'}`}></div>
+                            <div className="pastille-edit-frame">
+                                <div className={`pastille ${courrierReceptionne ? 'pastille-verte' : 'pastille-rouge'}`}></div>
                                 <IconContext.Provider value={{ color: "white", className: "card-button", size:"24px" }}>
                                     <FaPenToSquare />
                                 </IconContext.Provider>
@@ -92,10 +101,15 @@ export default function CardEntreprise(){
                         </div>
 
                         <div>
-                            <Checkbox
+                            {/* <Checkbox
                             checked={checked}
                             onChange={e => setChecked(e.target.checked)}
+                            /> */}
+                            <Checkbox
+                                checked={selectedCompanies[companies[index]._id]}
+                                onChange={() => handleCheckboxChange(companies[index]._id)}
                             />
+
                         </div>
 
                     </div>
