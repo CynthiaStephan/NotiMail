@@ -6,16 +6,14 @@ export default function Header() {
     const [companies, setCompanies] = useState([])
 
     useEffect(() => {
-        
-        const requestBody = {
-                 };
+    
 
         fetch('http://51.83.69.229:3000/api/users/gestionEntreprise', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(requestBody)
+            // body: JSON.stringify(requestBody)
         })
         .then(response => {
             if (!response.ok) {
@@ -32,7 +30,7 @@ export default function Header() {
 
     return (
         <>
-            <div>
+            <header>
                 <img src="./Logo.png" alt="Logo NotiMail" />
                 <div>
                     {/* <p>{firmName[0].firm_name}</p> */}
@@ -46,7 +44,7 @@ export default function Header() {
                         Deconnexion
                     </button>
                 </div>
-            </div>
+            </header>
         </>
     )
 }

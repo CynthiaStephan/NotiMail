@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaPenToSquare, FaPhone, FaAt } from "react-icons/fa6";
 import { IconContext } from "react-icons";
 import { Checkbox, Spinner } from "evergreen-ui";
+import './CardEntreprise.css'
 
 
 
@@ -12,6 +13,10 @@ export default function CardEntreprise(){
     const toggleVisibility = () => {
       setVisible(!visible);
     };
+
+    /* Vérification de la reception du courrier. */
+    const [courrierReceptionne, setCourrierReceptionne] = useState(false);
+
 
     /* Vérifier que l'information a bien été récupéré*/
     const [load, setLoad] = useState(true);
@@ -28,11 +33,11 @@ export default function CardEntreprise(){
                  };
 
         fetch('http://51.83.69.229:3000/api/users/gestionEntreprise', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(requestBody)
+      
         })
         .then(response => {
             if (!response.ok) {
@@ -41,9 +46,14 @@ export default function CardEntreprise(){
             return response.json();
         })
         .then((data) => {
-            setCompanies(data)
+            // setCompanies(data)
+            // setLoad(false);
+            // console.log(data)
+            setCompanies(data);
+            const receptionne = data.some(company => company.has_mail); // Vérifiez si au moins une entreprise a reçu le courrier
+            setCourrierReceptionne(receptionne);
             setLoad(false);
-            console.log(data)
+            console.log(data);
         })
         .catch(error => {
             console.error('Erreur:', error);
@@ -55,26 +65,30 @@ export default function CardEntreprise(){
     
     return(
         <>
+            <div className="companies-card-frame">
             {/* Je m'assure que l'information est bien chargé */}
             {load ? (
                 <Spinner size={24} />
             ) : (
             companies && companies.map((items, index) => (
 
+
                 <div className="companie-card" key={index}>
 
                     <div className="top-companie-card">
-                        <div>
-                            <div className="pastille"></div>
-                            <IconContext.Provider value={{ color: "white", className: "card-button", size:"24px" }}>
-                                <FaPenToSquare />
-                            </IconContext.Provider>
-                        </div>
+                        <div className="top-left-card">
+                            <div>
+                            <div className={`pastille ${courrierReceptionne ? 'pastille-verte' : 'pastille-rouge'}`}></div>
+                                <IconContext.Provider value={{ color: "white", className: "card-button", size:"24px" }}>
+                                    <FaPenToSquare />
+                                </IconContext.Provider>
+                            </div>
 
-                        <div  onClick={toggleVisibility}>
-                            <h2>Zenith Dynamics</h2>
-                            <p>Marion P.</p>
-                            <p>19/09/2023</p>
+                            <div  onClick={toggleVisibility}>
+                                <h2>{companies[index].firm_name}</h2>
+                                <p>{companies[index].first_name} {companies[index].last_name}</p>
+                                <p>{companies[index].last_picked_up || `N'a pas encore reçu de courrier`}</p>
+                            </div>
                         </div>
 
                         <div>
@@ -91,12 +105,12 @@ export default function CardEntreprise(){
                         <div className="bottom-companie-card">
                             <div>
                                 <FaAt />
-                                <a href=""></a>
+                                <a href={`mailto:${companies[index].email}`}>{companies[index].email}</a>
                             </div>
 
                             <div>
                                 <FaPhone />
-                                <a href=""></a>
+                                <a href={`tel:${companies[index].phone_number}`}>{companies[index].phone_number}</a>
                             </div>
                         </div>
                         </IconContext.Provider>
@@ -104,17 +118,8 @@ export default function CardEntreprise(){
                 </div>
                 ))
             )}
-
-
-            {/* <p onClick={toggleVisibility}>NovaSphere Solutions</p>
-
-            {visible && (
-                <div>
-                    <p>Ceci est la div dont la visibilité sera modifiée</p>
-                </div>
-            )} */}
             
-
+            </div>
         </>
     )
 }

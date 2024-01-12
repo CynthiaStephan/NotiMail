@@ -1,0 +1,78 @@
+/* Pastille de statut reception courrier */
+.pastille {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+  
+  .pastille-verte {
+    background-color: var(--validation);
+  }
+  
+  .pastille-rouge {
+    background-color: var(--red);
+  }
+
+  .companies-card-frame{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+
+.companie-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    color: var(--white);
+
+}
+
+.companie-card h2{
+    font-family: var(--header);
+}
+.companie-card a{
+    color: var(--white);
+    text-decoration: none;
+}
+
+
+
+.top-companie-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    border-radius: 8px 8px 0px 0px;
+    width: 100%;
+    padding: 16px 24px;
+}
+
+.top-left-card{
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+}
+
+.bottom-companie-card{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: var(--primaryLight);
+    width: 100%;
+    border-radius: 0px 0px 8px 8px;
+    padding: 24px 32px;
+}
+
+.bottom-companie-card div{
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+}
