@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaPenToSquare, FaPhone, FaAt } from "react-icons/fa6";
 import { IconContext } from "react-icons";
-import { Checkbox, Spinner } from "evergreen-ui";
+import { Spinner } from "evergreen-ui";
 import './CardEntreprise.css'
 
 
@@ -9,9 +9,13 @@ import './CardEntreprise.css'
 export default function CardEntreprise(){
 
     /* Afficher ou pas la 2e partie de la card */
-    const [visible, setVisible] = useState(false);
-    const toggleVisibility = () => {
-      setVisible(!visible);
+    const [visibilityMap, setVisibilityMap] = useState({});
+    // Fonction pour basculer la visibilité d'une entreprise spécifique
+    const toggleVisibility = (companyId) => {
+        setVisibilityMap(prevState => ({
+        ...prevState,
+        [companyId]: !prevState[companyId],
+        }));
     };
 
     /* Vérification de la reception du courrier. */
@@ -22,13 +26,13 @@ export default function CardEntreprise(){
     const [load, setLoad] = useState(true);
     
     /* Checkbox */
-    const [checked, setChecked] = React.useState(true)
+    const [checked, setChecked] = React.useState(true);
     // Permet de selectionner les cases individuellement.
     const [selectedCompanies, setSelectedCompanies] = useState({});
 
 
     /* Fetch pour récupérer les informations d'entreprise */
-    const [companies, setCompanies] = useState([])
+    const [companies, setCompanies] = useState([]);
 
     useEffect(() => {
         
@@ -93,29 +97,33 @@ export default function CardEntreprise(){
                                 </IconContext.Provider>
                             </div>
 
-                            <div  onClick={toggleVisibility}>
+                            <div className="card-open" onClick={() => toggleVisibility(companies[index]._id)}>
                                 <h2>{companies[index].firm_name}</h2>
                                 <p>{companies[index].first_name} {companies[index].last_name}</p>
                                 <p>{companies[index].last_picked_up || `N'a pas encore reçu de courrier`}</p>
                             </div>
                         </div>
 
-                        <div>
+                        <div>                        
                             {/* <Checkbox
-                            checked={checked}
-                            onChange={e => setChecked(e.target.checked)}
-                            /> */}
-                            <Checkbox
+                                className="card-selection"
                                 checked={selectedCompanies[companies[index]._id]}
                                 onChange={() => handleCheckboxChange(companies[index]._id)}
-                            />
+                            /> */}
+                            
+                                <input
+                                    type="checkbox"
+                                    className="card-selection"
+                                    checked={!!selectedCompanies[companies[index]._id]}
+                                    onChange={() => handleCheckboxChange(companies[index]._id)}
+                                />
 
                         </div>
 
                     </div>
 
-                    {visible && (
-                        <IconContext.Provider value={{ color: "white", className: "", size:"30px" }}>
+                    {visibilityMap[companies[index]._id] && (
+                        <IconContext.Provider value={{ color: "white", className: "", size:"24px" }}>
                         <div className="bottom-companie-card">
                             <div>
                                 <FaAt />
