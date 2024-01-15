@@ -31,7 +31,7 @@ export default function Header() {
     return (
         <>
             <header>
-                <img src="./Logo.png" alt="Logo NotiMail" />
+                <img src="./Logo.png"  alt="Logo NotiMail" />
                 <div>
                     {/* <p>{firmName[0].firm_name}</p> */}
                     

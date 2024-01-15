@@ -3,6 +3,7 @@ import { FaPenToSquare, FaPhone, FaAt } from "react-icons/fa6";
 import { IconContext } from "react-icons";
 import { Spinner } from "evergreen-ui";
 import './CardEntreprise.css'
+import { Link } from "react-router-dom";
 
 
 
@@ -74,6 +75,17 @@ export default function CardEntreprise(){
             [companyId]: !prevState[companyId],
         }));
     };
+
+    const handleIconClick = (firmname) => {
+        // Mettre à jour l'état avec les données à envoyer si nécessaire
+        // ...
+      
+        // Naviguer vers la nouvelle page avec les données
+        // Utilisez Link de React Router au lieu de l'ancre a
+        // Assurez-vous d'avoir défini la route correspondante dans votre fichier de configuration des routes
+        const editPath = `/admin/${firmname}`;
+        history.push(editPath);
+      };
     
     
     return(
@@ -90,17 +102,27 @@ export default function CardEntreprise(){
 
                     <div className="top-companie-card">
                         <div className="top-left-card">
+
                             <div className="pastille-edit-frame">
+                                
                                 <div className={`pastille ${courrierReceptionne ? 'pastille-verte' : 'pastille-rouge'}`}></div>
-                                <IconContext.Provider value={{ color: "white", className: "card-button", size:"24px" }}>
-                                    <FaPenToSquare />
-                                </IconContext.Provider>
+
+                                <Link to={`/admin/${companies[index].firm_name}`}>
+                                    <IconContext.Provider value={{ color: "white", className: "card-button", size:"24px" }}>
+                                        <FaPenToSquare />
+                                    </IconContext.Provider>
+                                </Link>
+
                             </div>
 
                             <div className="card-open" onClick={() => toggleVisibility(companies[index]._id)}>
+
                                 <h2>{companies[index].firm_name}</h2>
+
                                 <p>{companies[index].first_name} {companies[index].last_name}</p>
+
                                 <p>{companies[index].last_picked_up || `N'a pas encore reçu de courrier`}</p>
+
                             </div>
                         </div>
 

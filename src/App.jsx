@@ -3,10 +3,8 @@ import './App.css'
 import Login from './pages/login'
 import Admin from './pages/admin'
 import User from './pages/user'
-import CreateUser from './pages/createUser'
-import Header from './components/Header/Header'
-import Notification from './components/Notification/Notification'
-import CardEntreprise from './components/CardEntreprise/CardEntreprise'
+import CreateUser from './pages/createUser' 
+import EditUser from './pages/EditUser'
 
 
     function App() {
@@ -15,19 +13,13 @@ import CardEntreprise from './components/CardEntreprise/CardEntreprise'
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path={'/'} element={<Login/>} />
-                    <Route path={'/admin'} element={<Admin/>} />
-                    <Route path={'/admin/:firmname'} element={<CreateUser/>} />
-                    <Route path={'/user/:firmname'} element={<User />} >
-                        <Route path={'/user/:firmname'} />
-                        <Route path={'/user/:firmname'} />
-                    </Route>
+                    <Route path={'/'} element={<Login />} />
+                    <Route path={'/admin'} element={<Admin />} />
+                    <Route path={'/admin/createuser'} element={<CreateUser />} />
+                    <Route path={'/admin/:firmname'} element={<EditUser />} />
+                    <Route path={'/user/:firmname'} element={<User />} />
                 </Routes>
             </BrowserRouter>
-
-            <Header />
-            <Notification />
-            <CardEntreprise />
 
         </>
     )
