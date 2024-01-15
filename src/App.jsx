@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Login from './pages/login'
-import Admin from './pages/admin'
-import User from './pages/user'
-import CreateUser from './pages/createUser' 
+import Login from './pages/Login'
+import Admin from './pages/Admin'
+import User from './pages/User'
+import CreateUser from './pages/CreateUser' 
 import EditUser from './pages/EditUser'
 
 
@@ -16,8 +16,8 @@ import EditUser from './pages/EditUser'
                     <Route path={'/'} element={<Login />} />
                     <Route path={'/admin'} element={<Admin />} />
                     <Route path={'/admin/createuser'} element={<CreateUser />} />
-                    <Route path={'/admin/:firmname'} element={<EditUser />} />
-                    <Route path={'/user/:firmname'} element={<User />} />
+                    <Route path={'/admin/:firm_name'} element={<EditUser />} />
+                    <Route path={'/user/:firm_name'} element={<User />} />
                 </Routes>
             </BrowserRouter>
 

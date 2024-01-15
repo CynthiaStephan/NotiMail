@@ -54,9 +54,7 @@ export default function CardEntreprise(){
             return response.json();
         })
         .then((data) => {
-            // setCompanies(data)
-            // setLoad(false);
-            // console.log(data)
+
             setCompanies(data);
             const receptionne = data.some(company => company.has_mail); // Vérifiez si au moins une entreprise a reçu le courrier
             setCourrierReceptionne(receptionne);
@@ -145,7 +143,7 @@ export default function CardEntreprise(){
                     </div>
 
                     {visibilityMap[companies[index]._id] && (
-                        <IconContext.Provider value={{ color: "white", className: "", size:"24px" }}>
+                        <IconContext.Provider value={{ color: "white", className: "companies-icons", size:"24px" }}>
                         <div className="bottom-companie-card">
                             <div>
                                 <FaAt />

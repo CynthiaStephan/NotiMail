@@ -6,7 +6,9 @@ header{
     justify-content: space-between;
     align-content: center;
     color: black;
-    padding: 24px 52px;
+    padding: 24px 32px;
+    width: 100%;
+    max-width: 1200px;
 }
 
 header button{
