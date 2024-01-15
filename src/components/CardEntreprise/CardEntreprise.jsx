@@ -76,14 +76,14 @@ export default function CardEntreprise(){
         }));
     };
 
-    const handleIconClick = (firmname) => {
+    const handleIconClick = (firm_name) => {
         // Mettre à jour l'état avec les données à envoyer si nécessaire
         // ...
       
         // Naviguer vers la nouvelle page avec les données
         // Utilisez Link de React Router au lieu de l'ancre a
         // Assurez-vous d'avoir défini la route correspondante dans votre fichier de configuration des routes
-        const editPath = `/admin/${firmname}`;
+        const editPath = `/admin/${firm_name}`;
         history.push(editPath);
       };
     

@@ -2,15 +2,15 @@ import { useParams } from "react-router-dom";
 
 export default function EditUser(){
 
-        const { firmname } = useParams();
+        const { firm_name } = useParams();
 
-        console.log('firmname:', firmname); 
+        console.log('firmname:', firm_name); 
       
         // Utilisez le firmname comme nécessaire dans votre composant
         // ...
     return(
         <>
-        <h1> Bonjour ! {firmname}</h1>
+        <h1> Bonjour ! {firm_name}</h1>
         </>
     )
 }
