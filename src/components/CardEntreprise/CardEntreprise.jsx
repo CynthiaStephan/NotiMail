@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 
 
-export default function CardEntreprise(){
+export default function CardEntreprise({ searchTerm }) {
 
     /* Afficher ou pas la 2e partie de la card */
     const [visibilityMap, setVisibilityMap] = useState({});
@@ -22,7 +22,6 @@ export default function CardEntreprise(){
     /* Vérification de la reception du courrier. */
     const [courrierReceptionne, setCourrierReceptionne] = useState(false);
 
-
     /* Vérifier que l'information a bien été récupéré*/
     const [load, setLoad] = useState(true);
     
@@ -31,21 +30,25 @@ export default function CardEntreprise(){
     // Permet de selectionner les cases individuellement.
     const [selectedCompanies, setSelectedCompanies] = useState({});
 
-
     /* Fetch pour récupérer les informations d'entreprise */
     const [companies, setCompanies] = useState([]);
+
+    // État pour stocker les entreprises filtrées
+    const [filteredCompanies, setFilteredCompanies] = useState([]);
+
+
 
     useEffect(() => {
         
         const requestBody = {
-                 };
+                };
 
         fetch('http://51.83.69.229:3000/api/users/gestionEntreprise', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-      
+    
         })
         .then(response => {
             if (!response.ok) {
@@ -66,7 +69,29 @@ export default function CardEntreprise(){
             setLoad(false);
         });
     }, []);
+
+    useEffect(() => {
+        if (searchTerm && searchTerm.trim() !== '') {
+          const filteredData = companies.filter((company) => {
+            const { firm_name, first_name, last_name } = company;
+            const searchRegex = new RegExp(searchTerm, 'i');
     
+            return (
+              searchRegex.test(firm_name) ||
+              searchRegex.test(first_name) ||
+              searchRegex.test(last_name)
+            );
+          });
+    
+          setFilteredCompanies(filteredData);
+        } else {
+          setFilteredCompanies(companies);
+        }
+      }, [searchTerm, companies]);
+
+
+
+    // Permet de différencier les checkbox
     const handleCheckboxChange = (companyId) => {
         setSelectedCompanies(prevState => ({
             ...prevState,
@@ -74,16 +99,14 @@ export default function CardEntreprise(){
         }));
     };
 
+    // Au click sur l'icone edit envoie des données vers nouvelle page dans l'url
     const handleIconClick = (firm_name) => {
-        // Mettre à jour l'état avec les données à envoyer si nécessaire
-        // ...
-      
         // Naviguer vers la nouvelle page avec les données
-        // Utilisez Link de React Router au lieu de l'ancre a
-        // Assurez-vous d'avoir défini la route correspondante dans votre fichier de configuration des routes
         const editPath = `/admin/${firm_name}`;
         history.push(editPath);
-      };
+    };
+
+    
     
     
     return(
@@ -93,7 +116,8 @@ export default function CardEntreprise(){
             {load ? (
                 <Spinner size={24} />
             ) : (
-            companies && companies.map((items, index) => (
+                filteredCompanies &&
+                filteredCompanies.map((company, index) => (
 
 
                 <div className="companie-card" key={index}>
