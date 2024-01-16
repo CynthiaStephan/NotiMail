@@ -129,7 +129,7 @@ export default function CardEntreprise({ searchTerm }) {
                                 
                                 <div className={`pastille ${courrierReceptionne ? 'pastille-verte' : 'pastille-rouge'}`}></div>
 
-                                <Link to={`/admin/${companies[index].firm_name}`}>
+                                <Link to={`/admin/${company.firm_name}`}>
                                     <IconContext.Provider value={{ color: "white", className: "card-button", size:"24px" }}>
                                         <FaPenToSquare />
                                     </IconContext.Provider>
@@ -137,13 +137,13 @@ export default function CardEntreprise({ searchTerm }) {
 
                             </div>
 
-                            <div className="card-open" onClick={() => toggleVisibility(companies[index]._id)}>
+                            <div className="card-open" onClick={() => toggleVisibility(company._id)}>
 
-                                <h2>{companies[index].firm_name}</h2>
+                                <h2>{company.firm_name}</h2>
 
-                                <p>{companies[index].first_name} {companies[index].last_name}</p>
+                                <p>{company.first_name} {company.last_name}</p>
 
-                                <p>{companies[index].last_picked_up || `N'a pas encore reçu de courrier`}</p>
+                                <p>{company.last_picked_up || `N'a pas encore reçu de courrier`}</p>
 
                             </div>
                         </div>
@@ -151,32 +151,32 @@ export default function CardEntreprise({ searchTerm }) {
                         <div>                        
                             {/* <Checkbox
                                 className="card-selection"
-                                checked={selectedCompanies[companies[index]._id]}
-                                onChange={() => handleCheckboxChange(companies[index]._id)}
+                                checked={selectedCompanies[company._id]}
+                                onChange={() => handleCheckboxChange(company._id)}
                             /> */}
                             
                                 <input
                                     type="checkbox"
                                     className="card-selection"
-                                    checked={!!selectedCompanies[companies[index]._id]}
-                                    onChange={() => handleCheckboxChange(companies[index]._id)}
+                                    checked={!!selectedCompanies[company._id]}
+                                    onChange={() => handleCheckboxChange(company._id)}
                                 />
 
                         </div>
 
                     </div>
 
-                    {visibilityMap[companies[index]._id] && (
+                    {visibilityMap[company._id] && (
                         <IconContext.Provider value={{ color: "white", className: "companies-icons", size:"24px" }}>
                         <div className="bottom-companie-card">
                             <div>
                                 <FaAt />
-                                <a href={`mailto:${companies[index].email}`}>{companies[index].email}</a>
+                                <a href={`mailto:${company.email}`}>{company.email}</a>
                             </div>
 
                             <div>
                                 <FaPhone />
-                                <a href={`tel:${companies[index].phone_number}`}>{companies[index].phone_number}</a>
+                                <a href={`tel:${company.phone_number}`}>{company.phone_number}</a>
                             </div>
                         </div>
                         </IconContext.Provider>

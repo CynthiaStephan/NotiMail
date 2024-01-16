@@ -22,7 +22,7 @@ export default function Admin(){
                 onChange={(e) => setSearchTerm(e.target.value)}
                 />
 
-                <CardEntreprise />
+                <CardEntreprise searchTerm={searchTerm} />
 
                 <div className="bottom-menu">
                     <IconContext.Provider value={{ color: "white", className: "companies-icons", size:"32px" }}>
