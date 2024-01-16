@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Login from './pages/Login'
-import Admin from './pages/Admin'
 import User from './pages/User'
 import CreateUser from './pages/CreateUser' 
 import EditUser from './pages/EditUser'
+import Login from './pages/login'
+import Admin from './pages/admin'
 
 
     function App() {

@@ -5,6 +5,7 @@ import { IconContext } from "react-icons";
 import { FaEnvelope, FaPlus } from "react-icons/fa6";
 import './Admin.css'
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Admin(){
 
@@ -26,7 +27,9 @@ export default function Admin(){
 
                 <div className="bottom-menu">
                     <IconContext.Provider value={{ color: "white", className: "companies-icons", size:"32px" }}>
-                        <button><FaPlus /></button>
+                        <Link to={'createuser'}>
+                            <button><FaPlus /></button>
+                        </Link>
                         <button><FaEnvelope /></button>
                     </IconContext.Provider>
                 </div>

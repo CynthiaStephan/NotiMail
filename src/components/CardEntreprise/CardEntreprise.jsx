@@ -70,24 +70,34 @@ export default function CardEntreprise({ searchTerm }) {
         });
     }, []);
 
-    useEffect(() => {
+    seEffect(() => {
+        // Le useEffect s'exécute chaque fois que searchTerm ou companies change.
+    
         if (searchTerm && searchTerm.trim() !== '') {
-          const filteredData = companies.filter((company) => {
-            const { firm_name, first_name, last_name } = company;
+            // Vérifie si searchTerm existe et n'est pas une chaîne vide après avoir retiré les espaces.
+    
+            // Crée une expression régulière (regex) pour effectuer une recherche insensible à la casse.
             const searchRegex = new RegExp(searchTerm, 'i');
     
-            return (
-              searchRegex.test(firm_name) ||
-              searchRegex.test(first_name) ||
-              searchRegex.test(last_name)
-            );
-          });
+            // Filtre les entreprises en fonction du terme de recherche.
+            const filteredData = companies.filter((company) => {
+                const { firm_name, first_name, last_name } = company;
     
-          setFilteredCompanies(filteredData);
+                // Vérifie si le terme de recherche correspond à firm_name, first_name ou last_name.
+                return (
+                    searchRegex.test(firm_name) ||
+                    searchRegex.test(first_name) ||
+                    searchRegex.test(last_name)
+                );
+            });
+    
+            // Met à jour l'état avec les entreprises filtrées.
+            setFilteredCompanies(filteredData);
         } else {
-          setFilteredCompanies(companies);
+            // Si le terme de recherche est vide, affiche toutes les entreprises sans filtre.
+            setFilteredCompanies(companies);
         }
-      }, [searchTerm, companies]);
+    }, [searchTerm, companies]);
 
 
 
