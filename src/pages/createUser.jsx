@@ -179,7 +179,7 @@ const CreateUser = () => {
 
             {/* Bouton Terminer */}
             <Button appearance="primary" intent="success" type="submit">
-              Terminer
+              Créer
             </Button>
           </div>
         </form>
