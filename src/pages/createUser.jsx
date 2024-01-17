@@ -16,7 +16,7 @@ const CreateUser = () => {
     last_name: "",
     phone_number: "",
     email: "",
-    isAdmin: false,
+    is_admin: false,
   });
   
 
@@ -158,10 +158,11 @@ const CreateUser = () => {
           <label>
             Admin
             <Checkbox
-              checked={formData.isAdmin}
-              onChange={(e) =>
-                setFormData({ ...formData, isAdmin: e.target.checked })
-              }
+              checked={formData.is_admin}
+              onChange={(e) => {
+                setFormData({ ...formData, is_admin: e.target.checked })
+                console.log(formData)
+              }}
             />
           </label>
 

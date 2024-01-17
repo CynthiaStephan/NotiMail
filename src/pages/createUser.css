@@ -24,6 +24,7 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    max-width: 600px;
     margin-bottom: 5px; /* Ajouter un espace en bas */
     padding-left: 30px;
     padding-right: 30px;
