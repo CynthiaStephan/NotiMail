@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import User from './pages/User'
+import User from './pages/user'
 import CreateUser from './pages/CreateUser' 
 import EditUser from './pages/EditUser'
 import Login from './pages/login'

@@ -19,6 +19,8 @@
     width: 52px;
     border: none;
     background-color: var(--secondary);
+    cursor: pointer;
+    
 }
 
 .admin-home{
