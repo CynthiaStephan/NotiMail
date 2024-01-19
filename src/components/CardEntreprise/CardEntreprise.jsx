@@ -7,37 +7,23 @@ import { Link } from "react-router-dom";
 
 
 
-export default function CardEntreprise({ searchTerm }) {
+export default function CardEntreprise({ searchTerm, setSelectedCompanies }) {
 
     /* Afficher ou pas la 2e partie de la card */
     const [visibilityMap, setVisibilityMap] = useState({});
-    // Fonction pour basculer la visibilité d'une entreprise spécifique
-    const toggleVisibility = (companyId) => {
-        setVisibilityMap(prevState => ({
-        ...prevState,
-        [companyId]: !prevState[companyId],
-        }));
-    };
-
     /* Vérification de la reception du courrier. */
     const [courrierReceptionne, setCourrierReceptionne] = useState(false);
-
     /* Vérifier que l'information a bien été récupéré*/
     const [load, setLoad] = useState(true);
-    
-    /* Checkbox */
-    const [checked, setChecked] = React.useState(true);
     // Permet de selectionner les cases individuellement.
-    const [selectedCompanies, setSelectedCompanies] = useState({});
 
     /* Fetch pour récupérer les informations d'entreprise */
     const [companies, setCompanies] = useState([]);
-
     // État pour stocker les entreprises filtrées
     const [filteredCompanies, setFilteredCompanies] = useState([]);
 
 
-
+    
     useEffect(() => {
         
         const requestBody = {
@@ -100,12 +86,18 @@ export default function CardEntreprise({ searchTerm }) {
     }, [searchTerm, companies]);
 
 
+    // Permet de différencier les checkbox  {clé  : valeur, clé : valeur }
+    const handleCheckboxChange = (company) => {
+        setSelectedCompanies(prevState => [...prevState, {userId : company._id, firm_name : company.firm_name}]);
+    };
 
-    // Permet de différencier les checkbox
-    const handleCheckboxChange = (companyId) => {
-        setSelectedCompanies(prevState => ({
-            ...prevState,
-            [companyId]: !prevState[companyId],
+
+
+       // Fonction pour basculer la visibilité d'une entreprise spécifique
+       const toggleVisibility = (companyId) => {
+        setVisibilityMap(prevState => ({
+        ...prevState,
+        [companyId]: !prevState[companyId],
         }));
     };
 
@@ -115,7 +107,6 @@ export default function CardEntreprise({ searchTerm }) {
         const editPath = `/admin/${firm_name}`;
         history.push(editPath);
     };
-
     
     
     
@@ -159,17 +150,11 @@ export default function CardEntreprise({ searchTerm }) {
                         </div>
 
                         <div>                        
-                            {/* <Checkbox
-                                className="card-selection"
-                                checked={selectedCompanies[company._id]}
-                                onChange={() => handleCheckboxChange(company._id)}
-                            /> */}
-                            
+                          
                                 <input
                                     type="checkbox"
                                     className="card-selection"
-                                    checked={!!selectedCompanies[company._id]}
-                                    onChange={() => handleCheckboxChange(company._id)}
+                                    onChange={() => handleCheckboxChange(company)}
                                 />
 
                         </div>
