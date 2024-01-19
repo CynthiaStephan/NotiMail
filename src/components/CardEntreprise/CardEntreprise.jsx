@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 
 
-export default function CardEntreprise({ searchTerm }) {
+export default function CardEntreprise({ searchTerm, setSelectedCompanies }) {
 
     /* Afficher ou pas la 2e partie de la card */
     const [visibilityMap, setVisibilityMap] = useState({});
@@ -16,12 +16,14 @@ export default function CardEntreprise({ searchTerm }) {
     /* Vérifier que l'information a bien été récupéré*/
     const [load, setLoad] = useState(true);
     // Permet de selectionner les cases individuellement.
-    const [selectedCompanies, setSelectedCompanies] = useState({});
+
     /* Fetch pour récupérer les informations d'entreprise */
     const [companies, setCompanies] = useState([]);
     // État pour stocker les entreprises filtrées
     const [filteredCompanies, setFilteredCompanies] = useState([]);
 
+
+    
     useEffect(() => {
         
         const requestBody = {
@@ -84,12 +86,9 @@ export default function CardEntreprise({ searchTerm }) {
     }, [searchTerm, companies]);
 
 
-    // Permet de différencier les checkbox
-    const handleCheckboxChange = (companyId) => {
-        setSelectedCompanies(prevState => ({
-            ...prevState,
-            [companyId]: !prevState[companyId],
-        }));
+    // Permet de différencier les checkbox  {clé  : valeur, clé : valeur }
+    const handleCheckboxChange = (company) => {
+        setSelectedCompanies(prevState => [...prevState, {userId : company._id, firm_name : company.firm_name}]);
     };
 
 
@@ -108,8 +107,6 @@ export default function CardEntreprise({ searchTerm }) {
         const editPath = `/admin/${firm_name}`;
         history.push(editPath);
     };
-
-    console.log(selectedCompanies)
     
     
     
@@ -157,8 +154,7 @@ export default function CardEntreprise({ searchTerm }) {
                                 <input
                                     type="checkbox"
                                     className="card-selection"
-                                    checked={!!selectedCompanies[company._id]}
-                                    onChange={() => handleCheckboxChange(company._id)}
+                                    onChange={() => handleCheckboxChange(company)}
                                 />
 
                         </div>
