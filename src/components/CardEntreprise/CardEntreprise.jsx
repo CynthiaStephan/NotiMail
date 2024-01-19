@@ -11,32 +11,16 @@ export default function CardEntreprise({ searchTerm }) {
 
     /* Afficher ou pas la 2e partie de la card */
     const [visibilityMap, setVisibilityMap] = useState({});
-    // Fonction pour basculer la visibilité d'une entreprise spécifique
-    const toggleVisibility = (companyId) => {
-        setVisibilityMap(prevState => ({
-        ...prevState,
-        [companyId]: !prevState[companyId],
-        }));
-    };
-
     /* Vérification de la reception du courrier. */
     const [courrierReceptionne, setCourrierReceptionne] = useState(false);
-
     /* Vérifier que l'information a bien été récupéré*/
     const [load, setLoad] = useState(true);
-    
-    /* Checkbox */
-    const [checked, setChecked] = React.useState(true);
     // Permet de selectionner les cases individuellement.
     const [selectedCompanies, setSelectedCompanies] = useState({});
-
     /* Fetch pour récupérer les informations d'entreprise */
     const [companies, setCompanies] = useState([]);
-
     // État pour stocker les entreprises filtrées
     const [filteredCompanies, setFilteredCompanies] = useState([]);
-
-
 
     useEffect(() => {
         
@@ -100,12 +84,21 @@ export default function CardEntreprise({ searchTerm }) {
     }, [searchTerm, companies]);
 
 
-
     // Permet de différencier les checkbox
     const handleCheckboxChange = (companyId) => {
         setSelectedCompanies(prevState => ({
             ...prevState,
             [companyId]: !prevState[companyId],
+        }));
+    };
+
+
+
+       // Fonction pour basculer la visibilité d'une entreprise spécifique
+       const toggleVisibility = (companyId) => {
+        setVisibilityMap(prevState => ({
+        ...prevState,
+        [companyId]: !prevState[companyId],
         }));
     };
 
@@ -116,6 +109,7 @@ export default function CardEntreprise({ searchTerm }) {
         history.push(editPath);
     };
 
+    console.log(selectedCompanies)
     
     
     
@@ -159,12 +153,7 @@ export default function CardEntreprise({ searchTerm }) {
                         </div>
 
                         <div>                        
-                            {/* <Checkbox
-                                className="card-selection"
-                                checked={selectedCompanies[company._id]}
-                                onChange={() => handleCheckboxChange(company._id)}
-                            /> */}
-                            
+                          
                                 <input
                                     type="checkbox"
                                     className="card-selection"
