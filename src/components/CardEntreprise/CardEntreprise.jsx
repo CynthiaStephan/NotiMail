@@ -88,7 +88,7 @@ export default function CardEntreprise({ searchTerm, setSelectedCompanies }) {
 
     // Permet de différencier les checkbox  {clé  : valeur, clé : valeur }
     const handleCheckboxChange = (company) => {
-        setSelectedCompanies(prevState => [...prevState, {userId : company._id, firm_name : company.firm_name}]);
+        setSelectedCompanies(prevState => [...prevState, {_id : company._id, firm_name : company.firm_name}]);
     };
 
 

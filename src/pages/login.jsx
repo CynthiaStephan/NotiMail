@@ -59,7 +59,7 @@ import {
             // pour stocker le token ,l'Id et le nom de l'entreprise de l'utilisateur
             //et savoir si l'utilisateur est un administrateur (is_admin).
             localStorage.setItem("token", data.token);
-            localStorage.setItem("userId", data.userId);
+            localStorage.setItem("_id", data.userId);
             localStorage.setItem("firm_name", data.firm_name);
             localStorage.setItem("is_admin", data.is_admin);
   
