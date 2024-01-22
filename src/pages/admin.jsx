@@ -30,10 +30,11 @@ console.log(selectedCompanies)
                     isShown={isShown}
                     title="No footer"
                     onCloseComplete={() => setIsShown(false)}
+                    containerProps={{ className: "custom-modal-container" }}
                     hasFooter={false}
                     hasHeader={false}
                 >
-                    <SendMessage  selectedCompanies={selectedCompanies}/>
+                    <SendMessage setIsShown={setIsShown} selectedCompanies={selectedCompanies}/>
                     
                 </Dialog>
 

@@ -19,25 +19,6 @@ const Login = () => {
   const navigate = useNavigate();
   const [firmName, setFirmName] = useState("");
 
-  //test
-  // useEffect(() => {
-  //   fetch("http://51.83.69.229:3000/api/users/login", {
-  //     method: "POST",
-  //     body: JSON.stringify({ firm_name: "back", password: "lh1G" }),
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //     });
-  // }, []);
-
-  // const [Infoconnexion, setInfoconnexion] = useState({
-  //   firm_name: "",
-  //   four_digit_code: "",
-  // });
-
   // Vérifier si le bouton de connexion doit être activé
   const isLoginButtonDisabled = !selectedCompany || !password;
 
@@ -47,12 +28,6 @@ const Login = () => {
   // Fonction appelée lorsqu'un utilisateur tente de se connecter
   const handleLogin = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page par défaut
-
-    // Vérifiez si les deux champs sont renseignés
-    // if (!selectedCompany || !password) {
-    //   alert("Veuillez remplir tous les champs.");
-    //   return; // Arrêtez la fonction s'il manque des informations
-    // }
 
     if (!selectedCompany || !password) {
       setEmptyFieldsAlert(true);
