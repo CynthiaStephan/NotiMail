@@ -78,7 +78,8 @@
   /* Boutons */
   .form-buttons {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
     margin-top: 20px; /* Marge en haut */
   }
   
@@ -94,3 +95,7 @@
     color:var(--white); /* Couleur du texte blanc */
   }
   
+  #form-button-create{
+    justify-content: flex-end;
+  }
+
