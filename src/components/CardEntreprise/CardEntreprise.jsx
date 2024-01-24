@@ -11,8 +11,6 @@ export default function CardEntreprise({ searchTerm, setSelectedCompanies }) {
 
     /* Afficher ou pas la 2e partie de la card */
     const [visibilityMap, setVisibilityMap] = useState({});
-    /* Vérification de la reception du courrier. */
-    const [courrierReceptionne, setCourrierReceptionne] = useState(false);
     /* Vérifier que l'information a bien été récupéré*/
     const [load, setLoad] = useState(true);
     // Permet de selectionner les cases individuellement.
@@ -46,7 +44,6 @@ export default function CardEntreprise({ searchTerm, setSelectedCompanies }) {
 
             setCompanies(data);
             const receptionne = data.some(company => company.has_mail); // Vérifiez si au moins une entreprise a reçu le courrier
-            setCourrierReceptionne(receptionne);
             setLoad(false);
             console.log(data);
         })
@@ -123,12 +120,12 @@ export default function CardEntreprise({ searchTerm, setSelectedCompanies }) {
 
                 <div className="companie-card" key={index}>
 
-                    <div className="top-companie-card">
+                    <div className={`top-companie-card ${visibilityMap[company._id] ? 'top-companie-card-open' : ''}`}>
                         <div className="top-left-card">
 
                             <div className="pastille-edit-frame">
                                 
-                                <div className={`pastille ${courrierReceptionne ? 'pastille-verte' : 'pastille-rouge'}`}></div>
+                            <div className={`pastille ${company.has_mail ? 'pastille-rouge' : 'pastille-verte'}`}></div>
 
                                 <Link to={`/admin/${company.firm_name}`}>
                                     <IconContext.Provider value={{ color: "white", className: "card-button", size:"24px" }}>
