@@ -87,7 +87,7 @@ const Login = () => {
             navigate(`/user/${firmName}`);
           }
         } else {
-          alert("Identifiants incorrects, veuillez réessayer dans 10 secondes");
+          alert("Identifiants incorrects\nVeuillez réessayer dans 10 secondes\nSi vous avez perdu votre mots de passe: contactez l'administateur du site");
           // Utilisation de setTimeout pour débloquer le bouton après 10 secondes
           setTimeout(() => {
             setButtonDisabled(false);
