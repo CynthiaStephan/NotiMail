@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import "./SendMessage.css"
+import { IconContext } from "react-icons";
+import { FaEnvelopeCircleCheck } from "react-icons/fa6";
 
 export default function SendMessage({ selectedCompanies, setIsShown }) {
         // État pour stocker les IDs sélectionnées
@@ -72,9 +74,14 @@ export default function SendMessage({ selectedCompanies, setIsShown }) {
 
             {
                 isSuccess ? (
-                    <>
-                        <p>Reussi</p>
-                    </>
+                    <div className="notify-success-frame">
+                        <IconContext.Provider value={{ color: "white", className: "companies-icons", size:"170px" }}>
+                            <FaEnvelopeCircleCheck />
+                        </IconContext.Provider>
+                        <p className="notify-success">Notifications envoyées !</p>
+                        <button onClick={handleModalClose}>Retourner à la gestion</button>
+                        
+                    </div>
                 ) : (
                     <>
                          <h2>Vous vous apprêtez à notifier :</h2>

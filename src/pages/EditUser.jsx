@@ -153,7 +153,7 @@ const EditUser = () => {
       </div>
 
       {/* Carte (Card) contenant le formulaire */}
-      <Card elevation={1} className="user-form-card">
+      <Card borderRadius={12} padding={32} elevation={1} className="user-form-card">
         {/* Formulaire */}
         <form onSubmit={handleSubmit}>
           {/* Champ Entreprise */}
