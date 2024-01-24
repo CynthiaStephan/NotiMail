@@ -76,15 +76,9 @@ const EditUser = () => {
 
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = (e) => {
-    // const tableID = {
-    //   admin_id: adminId,
-    //   user_id: userId
-    // };
-    
-    // console.log(tableID.admin_id + " - " + tableID.user_id + " dans l'url");
-        
     e.preventDefault();
-    fetch(`http://51.83.69.229:3000/api/users/update/?adminId=${adminId}&userId=${userId}`, {
+
+    fetch(`http://51.83.69.229:3000/api/users/update/${userId}`, {
       method: "PUT", // Méthode PUT
       headers: {
         "Authorization": `Bearer ${userToken}`,
@@ -96,6 +90,7 @@ const EditUser = () => {
         console.log(response);
         return response.json();
       })
+
       .then((data) => {
         console.log(data);
       })

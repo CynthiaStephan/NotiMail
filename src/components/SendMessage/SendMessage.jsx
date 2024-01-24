@@ -58,8 +58,8 @@ export default function SendMessage({ selectedCompanies, setIsShown }) {
         });
     }
 
-       // Fonction pour fermer la modal et réinitialiser le message de succès
-       const handleModalClose = () => {
+    // Fonction pour fermer la modal et réinitialiser le message de succès
+    const handleModalClose = () => {
         setIsSuccess(false);
         setIsShown(false);
     }
