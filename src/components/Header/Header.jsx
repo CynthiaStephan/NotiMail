@@ -30,7 +30,7 @@ export default function Header() {
     return (
         <>
             <header>
-                <img src="../petit-logo.png"  alt="Logo NotiMail" />
+                <img src="/petit-logo.png"  alt="Logo NotiMail" />
                 <div>
                     
                     {whoIsLoggedIn.length > 0 ? (

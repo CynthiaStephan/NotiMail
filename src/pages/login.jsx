@@ -157,7 +157,7 @@ const Login = () => {
   return (
     <div className="login-page">
       {/* Ajout de la balise <form> autour de votre contenu de connexion */}
-      <img src="./logo.png" alt="Logo de NotiMail" />
+      <img src="/logo.png" alt="Logo de NotiMail" />
 
       <form onSubmit={handleSubmit}>
         <div className="login-name">

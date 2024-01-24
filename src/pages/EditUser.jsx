@@ -133,7 +133,7 @@ const EditUser = () => {
   return (
     <div className="edit-user-page">
       {/* Logo */}
-      <img src="../logo.png" alt="Logo de NotiMail" />
+      <img src="/logo.png" alt="Logo de NotiMail" />
 
       <div className="header-container">
         {/* Bouton de retour */}
