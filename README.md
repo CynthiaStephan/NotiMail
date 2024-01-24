@@ -18,7 +18,7 @@ Ce projet est une application web React conçue pour gérer les connexions et le
   - Les informations des utilisateurs sont gérées via une API backend (`GestionCourrier`), qui permet de créer, lire, mettre à jour et supprimer des utilisateurs.
 
 
-## Fronend
+## Frontend
 
 
 Le projet utilise les dépendances suivantes :

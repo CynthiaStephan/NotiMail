@@ -70,35 +70,40 @@ export default function SendMessage({ selectedCompanies, setIsShown }) {
 
         <div className="notify-frame">
 
-            {/* {isSuccess ? ():()} */}
-
-            {/* <h2>Vous vous apprêtez à notifier :</h2>
-            <div className="companies-to-notify">
-            <ul className="companies-to-notify-list">
-                {selectedCompanies.map(company => (
-                    <li key={company.firm_name}>{company.firm_name}</li>
-                ))}
-            </ul>
-            </div>
-            <div className="notify-button-frame">
-                <button 
-                className="send-message-cancel"
-                onClick={handleModalClose}
-                
-                >
-                    Annuler
-                </button>
-                <button 
-                    className="send-message-send" 
-                    type="submit"
-                    onClick={handleSend}
-                >
-                    Envoyer
-                </button>
-                {isSuccess && <p className="success-message">Données envoyées avec succès !</p>}
-            </div> */}
-
+            {
+                isSuccess ? (
+                    <>
+                        <p>Reussi</p>
+                    </>
+                ) : (
+                    <>
+                         <h2>Vous vous apprêtez à notifier :</h2>
+                        <div className="companies-to-notify">
+                        <ul className="companies-to-notify-list">
+                            {selectedCompanies.map(company => (
+                                <li key={company.firm_name}>{company.firm_name}</li>
+                            ))}
+                        </ul>
+                        </div>
+                        <div className="notify-button-frame">
+                            <button 
+                            className="send-message-cancel"
+                            onClick={handleModalClose}
+                            
+                            >
+                                Annuler
+                            </button>
+                            <button 
+                                className="send-message-send" 
+                                type="submit"
+                                onClick={handleSend}
+                            >
+                                Envoyer
+                            </button>
+                        </div>
+                    </>
+                )}
         </div>
         
-    )
+    );
 }
