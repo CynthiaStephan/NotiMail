@@ -2,118 +2,133 @@
 
 /* Reset de la marge et du padding pour le corps de la page */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Karla', sans-serif; /* Utilisation de la police Karla */
-    background-color: var(--white); /* Couleur de fond gris définie dans :root */
-  }
-  
-  /* Style du conteneur principal de la page de connexion */
-  .login-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    height: 100vh; /* Pleine hauteur de la vue */
-  }
-  
-  /* Style de l'image du logo */
-  .login-page img {
-    max-width: 100%;
-    height: auto;
-  }
- .login-page form{
+  margin: 0;
+  padding: 0;
+  font-family: 'Karla', sans-serif; /* Utilisation de la police Karla */
+  background-color: var(--white); /* Couleur de fond gris définie dans :root */
+}
+
+/* Style du conteneur principal de la page de connexion */
+.login-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  justify-content: center;
+  gap: 32px;
+  height: 100vh; /* Pleine hauteur de la vue */
+}
 
- }
-  
-  /* Style du composant Autocomplete */
-  .login-page .Autocomplete {
-    margin-top: 20px;
-    width: 80%; /* Ajustez la largeur selon les besoins */
-    display: flex;
+/* Style de l'image du logo */
+.login-page img {
+  max-width: 100%;
+  height: auto;
+}
+.login-page form{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 24px;
+
+}
+
+
+.login-page .login-name {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--grey);
   }
-  
 
-  .login-page .login-name {
-    display: flex;
-    flex-direction: row;
-    width: 300px;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 8px;
-    background: var(--grey);
+  .login-page .login-name input {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  background:var(--grey);
     }
 
-    .login-page .login-name input {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 8px;
-    background:var(--grey);
-      }
+  .login-page .login-name, .login-page .login-name input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+    }
 
-    .login-page .login-name, .login-page .login-name input {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-      }
+/* Style du champ de mot de passe */
+.login-page .login-password {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--grey);
+}
+
+.login-page .login-password input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #EBEBEB;
+}
+.login-page .login-password, .login-page .login-password input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Style de l'icône de déverrouillage */
+.login-page .login-password svg {
+  margin-left: 10px;
+  color: var(--primary);
+}
+
+
+.login-page button {
+  padding: 10px 20px;
+  background-color: var(--grey);
+  border: none;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif; /* Utilisation de la police Kanit */
+}
+/* Style du bouton de connexion lorsque le formulaire est valide */
+/* .login-page button:disabled,
+.login-page button.valid {
+background-color: grey; /* Couleur de fond en gris pour le formulaire valide */
+
+
+
+.login-page button:disabled {
+  background-color: var(--secondary); /* Couleur de fond pour le bouton désactivé */
+  color:var(--white);
+  cursor: not-allowed;
+  display: inline-flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+}
+.login-page button.connection{
+  padding: 10px 20px;
+  background-color: var(--secondary); /* Couleur verte par défaut */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px; /* Bordures arrondies par défaut */
+  font-family: 'Kanit', sans-serif; /* Utilisation de la police Kanit */
+}
+ .empty-fields-alert {
+  background-color: #ff7b7b;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+} 
   
-  /* Style du champ de mot de passe */
-  .login-page .login-password {
-    display: flex;
-    align-items: center;
-    width: 300px;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 8px;
-    background: var(--grey);
-  }
-  
-  .login-page .login-password input {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-background: #EBEBEB;
-  }
-  .login-page .login-password, .login-page .login-password input {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  /* Style de l'icône de déverrouillage */
-  .login-page .login-password svg {
-    margin-left: 10px;
-    color: var(--primary);
-  }
-  
-  /* Style du bouton de connexion */
-  .login-page button {
-    padding: 10px 20px;
-    background-color: var(--grey);
-    color: var(--primary);
-    border: none;
-    cursor: pointer;
-    font-family: 'Kanit', sans-serif; /* Utilisation de la police Kanit */
-  }
-  
-  .login-page button:disabled {
-    background-color: var(--secondary); /* Couleur de fond pour le bouton désactivé */
-    color: white;
-    cursor: not-allowed;
-    display: inline-flex;
-    padding: 12px 24px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 8px;
-  }
   

@@ -19,28 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [firmName, setFirmName] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(false); // Nouvel état pour bloquer le bouton
-  // ...
   const [showAlert, setShowAlert] = useState(false);
-  // ...
-
-  //test
-  // useEffect(() => {
-  //   fetch("http://51.83.69.229:3000/api/users/login", {
-  //     method: "POST",
-  //     body: JSON.stringify({ firm_name: "back", password: "lh1G" }),
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //     });
-  // }, []);
-
-  // const [Infoconnexion, setInfoconnexion] = useState({
-  //   firm_name: "",
-  //   four_digit_code: "",
-  // });
 
   // Vérifier si le bouton de connexion doit être activé
   const isLoginButtonDisabled = !selectedCompany || !password;
@@ -115,20 +94,13 @@ const Login = () => {
           }, 10000);
         }
       })
-      .catch((error) => console.error(error))
-      .finally(() => {
-        // Réinitialise l'état de l'alerte après la requête
-        setEmptyFieldsAlert(false);
-      });
+      .catch((error) => console.error(error));
   };
   // Fonction appelée lorsqu'un utilisateur soumet le formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (!selectedCompany || !password) {
-    //   alert("Veuillez remplir tous les champs.");
-    //   return;
-    // }
+
     // Appeler votre fonction de connexion ici
     handleLogin(e);
   };
@@ -180,16 +152,6 @@ const Login = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  //pour savoir quel type: objet ou tableau
-  // const typeDuState = typeof tabselect;
-  // console.log(typeDuState);
-
-  // const tableauEntreprise = Object.entries(tabselect);
-
-  // const nomEntreprise = tabselect
-  //   ? tabselect.map((entreprise) => entreprise)
-  //   : [];
-  // console.log(nomEntreprise);
 
   // Rendu de l'interface utilisateur
   return (

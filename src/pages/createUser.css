@@ -42,10 +42,8 @@
   /* Carte (Card) contenant le formulaire */
   .user-form-card {
     background-color:var(--primary); /* Couleur de fond bleue */
-    padding: 20px; /* Marge interne */
     margin-bottom: 80px;
-    border-radius: 8px; /* Coins arrondis */
-    max-width: 400px; /* Largeur maximale du formulaire */
+    max-width: 500px; /* Largeur maximale du formulaire */
     width: 100%; /* Pour assurer la responsivité sur mobile */
   }
   

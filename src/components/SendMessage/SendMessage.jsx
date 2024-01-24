@@ -56,6 +56,8 @@ export default function SendMessage({ selectedCompanies, setIsShown }) {
             setIsSuccess(false);
             console.error('Erreur :', error);
         });
+
+
     }
 
     // Fonction pour fermer la modal et réinitialiser le message de succès
@@ -68,7 +70,9 @@ export default function SendMessage({ selectedCompanies, setIsShown }) {
 
         <div className="notify-frame">
 
-            <h2>Vous vous apprêtez à notifier :</h2>
+            {/* {isSuccess ? ():()} */}
+
+            {/* <h2>Vous vous apprêtez à notifier :</h2>
             <div className="companies-to-notify">
             <ul className="companies-to-notify-list">
                 {selectedCompanies.map(company => (
@@ -92,7 +96,7 @@ export default function SendMessage({ selectedCompanies, setIsShown }) {
                     Envoyer
                 </button>
                 {isSuccess && <p className="success-message">Données envoyées avec succès !</p>}
-            </div>
+            </div> */}
 
         </div>
         

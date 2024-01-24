@@ -47,14 +47,14 @@
         <div className="header-container">
             {/* Bouton de retour */}
             <Button
-            appearance="minimal"
-            onClick={() => {
-                navigate("/admin");
-            }}
-            className="back-button" // Ajoutez une classe pour les styles supplémentaires
+                appearance="minimal"
+                onClick={() => {
+                    navigate("/admin");
+                }}
+                className="back-button" // Ajoutez une classe pour les styles supplémentaires
             >
-            {/* flèche vers la gauche */}
-            <FaArrowLeft />
+                {/* flèche vers la gauche */}
+                <FaArrowLeft />
             </Button>
 
             {/* Titre "Entreprise" */}
@@ -62,7 +62,7 @@
         </div>
 
         {/* Carte (Card) contenant le formulaire */}
-        <Card elevation={1} className="user-form-card">
+        <Card borderRadius={12} padding={32} elevation={1} className="user-form-card">
             {/* Formulaire */}
             <form onSubmit={handleSubmit}>
             {/* Champ Entreprise */}
